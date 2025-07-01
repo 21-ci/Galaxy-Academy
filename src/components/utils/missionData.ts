@@ -25,7 +25,7 @@ export const missionData: IMissionData[] = [
         title: "Structure of the Earth",
         level: 1,
         isAtive: true,
-        gameLink: "https://sehriyospace.uz/Unity/Puzzle/index.html",
+        gameLink: "https://allelf.github.io/PuzzleWebGL/",
         description:
             "This is a description for mission sun at level 1. It provides additional context and details about the mission.",
     },

@@ -10,10 +10,11 @@ import { tabletButtons } from "./tabletButtons/tabletButtons";
 import { Book } from "./book/Book";
 import { missionData } from "../../utils/missionData";
 import CloseBtn from '@/public/images/svg/closeBtn.svg'
+import { Skin } from "../../skin/Skin";
 
 
 export const Tablet = () => {
-  const [activeTab, setActiveTab] = useState("home");
+  const [activeTab, setActiveTab] = useState("mission");
   const [isGameOpen, setIsGameOpen] = useState(false);
   const [gameLink, setGameLink] = useState('')
 
@@ -55,9 +56,10 @@ export const Tablet = () => {
                 </div>
               </Content>
               <Content tabIndex={undefined} value="profile">
-                <div className={styles.contenWrapper}>
+                {/* <div className={styles.contenWrapper}>
                   <p className={styles.profileTitle}>Profile</p>
-                </div>
+                </div> */}
+                <Skin />
               </Content>
               <Content value="diary">
                 <Book />

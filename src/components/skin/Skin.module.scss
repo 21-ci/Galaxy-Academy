@@ -1,0 +1,27 @@
+.skinContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0 20px;
+
+  .title {
+    font-size: 40px;
+    font-family: var(--font-alumni), sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .skinContent {
+    .hairWrapper {
+      //   .hairContainer {
+      //     width: 104px;
+      //     height: 40px;
+      //     border-radius: 10px; /* скругление */
+      //     background: linear-gradient(to bottom, #00e5ff, #bdbdbd); /* голубой → серый */
+      //     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* лёгкая тень, по желанию */
+      //     border: none;
+      //   }
+    }
+  }
+}
