@@ -1,3 +1,4 @@
+import { boyHead } from "@/src/utils/skinData";
 import { Container } from "../shared/container/container"
 // import titleBg from '@/public/images/profile/skin/titleContainer.webp'
 import styles from './Skin.module.scss'
@@ -10,7 +11,17 @@ export const Skin = () => {
                 <div className={styles.skinContent}>
                     <div className={styles.hairWrapper}>
                         <div className={styles.hairContainer}>
-                            <p>hair</p>
+                            <p className={styles.hairTitle}>hair</p>
+                            <ul className={styles.hairList}>
+                                {boyHead.map((item) => {
+                                    const Icon = item.icon;
+                                    return (
+                                        <li key={item.id} className={styles.hairItem}>
+                                            <Icon className={styles.iconHead} />
+                                        </li>
+                                    );
+                                })}
+                            </ul>
                         </div>
                     </div>
                     <div className={styles.astronautWrapper}></div>
