@@ -12,6 +12,7 @@ import Test from '../test/quiz/quiz';
 import Leaderboard from '../leaderboard/leaderboard';
 import Mission from '../mission/Mission';
 import CloseBtn from '@/public/images/svg/closeBtn.svg';
+import { Skin } from '../../skin/Skin';
 
 export const Tablet = () => {
   const router = useRouter();
@@ -49,9 +50,7 @@ export const Tablet = () => {
               <Mission setIsGameOpen={setIsGameOpen} setGameLink={setGameLink} />
             </Content>
             <Content tabIndex={undefined} value="profile">
-              <div className={styles.contenWrapper}>
-                <p className={styles.profileTitle}>Profile</p>
-              </div>
+              <Skin />
             </Content>
             <Content value="diary">
               <Book />

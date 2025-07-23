@@ -32,13 +32,21 @@
   }
 }
 
-
-
 @media (min-width: 1200px) {
   .tablet {
     padding: 30px 100px 30px 38px;
     width: 800px;
     height: 476px;
+
+    .tabletBtnWrapper {
+      right: 20px;
+      .tabletBtn {
+        .icon {
+          width: 60px;
+          height: auto;
+        }
+      }
+    }
   }
 }
 
@@ -47,6 +55,16 @@
     padding: 32px 115px 32px 42px;
     width: 900px;
     height: 536px;
+
+    .tabletBtnWrapper {
+      right: 22px;
+      .tabletBtn {
+        .icon {
+          width: 70px;
+          height: auto;
+        }
+      }
+    }
   }
 }
 
@@ -55,5 +73,15 @@
     padding: 35px 125px 35px 45px;
     width: 1000px;
     height: 596px;
+
+    .tabletBtnWrapper {
+      right: 26px;
+      .tabletBtn {
+        .icon {
+          width: 80px;
+          height: auto;
+        }
+      }
+    }
   }
 }
