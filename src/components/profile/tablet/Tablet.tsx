@@ -1,30 +1,31 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import styles from "./Tablet.module.scss";
-import tabletBg from "@/public/images/profile/tablet_view.webp";
-import React, { useState } from "react";
-import { Root, List, Trigger, Content } from "@radix-ui/react-tabs";
-import { tabletButtons } from "./tabletButtons/tabletButtons";
-import { Book } from "./book/Book";
-import { useRouter, useSearchParams } from "next/navigation";
-import Test from "../test/quiz/quiz";
-import Leaderboard from "../leaderboard/leaderboard";
-import Mission from "../mission/Mission";
-import CloseBtn from "@/public/images/svg/closeBtn.svg";
+import Image from 'next/image';
+import styles from './Tablet.module.scss';
+import tabletBg from '@/public/images/profile/tablet_view.webp';
+import React, { useState } from 'react';
+import { Root, List, Trigger, Content } from '@radix-ui/react-tabs';
+import { tabletButtons } from './tabletButtons/tabletButtons';
+import { Book } from './book/Book';
+import { useRouter, useSearchParams } from 'next/navigation';
+import Test from '../test/quiz/quiz';
+import Leaderboard from '../leaderboard/leaderboard';
+import Mission from '../mission/Mission';
+import CloseBtn from '@/public/images/svg/closeBtn.svg';
+import { Skin } from '../../skin/Skin';
 
 export const Tablet = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const activeTabParam = searchParams.get("activeTab");
+  const activeTabParam = searchParams.get('activeTab');
   const [isGameOpen, setIsGameOpen] = useState(false);
-  const [gameLink, setGameLink] = useState("");
+  const [gameLink, setGameLink] = useState('');
 
-  const [activeTab, setActiveTab] = useState(activeTabParam || "mission");
+  const [activeTab, setActiveTab] = useState(activeTabParam || 'mission');
 
   const handleSetActiveParam = (value: string) => {
     const params = new URLSearchParams(searchParams.toString());
-    params.set("activeTab", value);
+    params.set('activeTab', value);
     router.replace(`/profile?${params.toString()}`, { scroll: false });
     setActiveTab(value);
   };
@@ -40,28 +41,16 @@ export const Tablet = () => {
           >
             <CloseBtn className="w-[50px] h-auto" />
           </button>
-          <iframe
-            src={gameLink}
-            className="w-full h-full border-none"
-            allowFullScreen
-          />
+          <iframe src={gameLink} className="w-full h-full border-none" allowFullScreen />
         </div>
       ) : (
         <div className={styles.tablet}>
-          <Root
-            value={activeTab}
-            onValueChange={(value) => handleSetActiveParam(value)}
-          >
+          <Root value={activeTab} onValueChange={(value) => handleSetActiveParam(value)}>
             <Content value="mission">
-              <Mission
-                setIsGameOpen={setIsGameOpen}
-                setGameLink={setGameLink}
-              />
+              <Mission setIsGameOpen={setIsGameOpen} setGameLink={setGameLink} />
             </Content>
             <Content tabIndex={undefined} value="profile">
-              <div className={styles.contenWrapper}>
-                <p className={styles.profileTitle}>Profile</p>
-              </div>
+              <Skin />
             </Content>
             <Content value="diary">
               <Book />
@@ -94,13 +83,7 @@ export const Tablet = () => {
                 })}
               </List>
             </div>
-            <Image
-              src={tabletBg}
-              alt=""
-              fill
-              className={styles.bgImage}
-              quality={100}
-            />
+            <Image src={tabletBg} alt="" fill className={styles.bgImage} quality={100} />
           </Root>
         </div>
       )}
