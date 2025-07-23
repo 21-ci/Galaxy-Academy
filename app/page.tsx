@@ -4,6 +4,7 @@ export default function Home() {
       className="min-h-screen bg-no-repeat bg-cover bg-center"
       style={{ backgroundImage: 'url("/images/svg/mainil.svg")' }}
     >
+      {/* <main>Your page content here</main> */}
     </div>
   );
 }

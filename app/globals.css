@@ -1,12 +1,17 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
+@tailwind base;
+@tailwind components;
 @tailwind utilities;
 
 :root {
-    --primapy-color: #ffffff
+  --primapy-color: #ffffff;
 }
 
 body {
-    background-color: #051425;
-    color: var(--primapy-color);
+  background: url(../public/images/main-bg.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 0;
+  color: var(--primapy-color);
 }
