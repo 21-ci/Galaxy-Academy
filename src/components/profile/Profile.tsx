@@ -7,12 +7,11 @@ import { ProfileMainSkin } from '../profileMainSkin/ProfileMainSkin';
 export const Profile = () => {
   return (
     <div className={styles.mainContainer}>
-      <Container>
+      <Container className="w-full h-full">
         <Suspense>
           <Tablet />
         </Suspense>
       </Container>
-      <ProfileMainSkin />
     </div>
   );
 };
