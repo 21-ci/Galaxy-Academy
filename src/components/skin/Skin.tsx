@@ -1,14 +1,30 @@
 import { boyHead, suit } from '@/src/utils/skinData';
 import { Container } from '../shared/container/container';
+import Star from '@/public/images/profile/skin/svg/star.svg';
+import ArrowLeft from '@/public/images/profile/skin/svg/arrow-left.svg';
+import ArrowRight from '@/public/images/profile/skin/svg/arrow-right.svg';
 import styles from './Skin.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-interface ISkinProps {
+interface ISuitProps {
   hair: string;
   costum: string;
 }
 
-const SelectedSuit = ({ hair, costum }: ISkinProps) => {
+interface ISkinProps {
+  data: {
+    name: string;
+    points: number;
+    place: number;
+    avatar: string;
+    skin: {
+      hair: string;
+      costum: string;
+    };
+  };
+}
+
+const SelectedSuit = ({ hair, costum }: ISuitProps) => {
   const mainSuit = suit.find((item) => item.name === costum);
   const mainHead = boyHead.find((item) => item.name === hair);
 
@@ -23,9 +39,35 @@ const SelectedSuit = ({ hair, costum }: ISkinProps) => {
   );
 };
 
-export const Skin = () => {
-  const [hair, setHair] = useState('');
-  const [costum, setCostum] = useState('');
+const SelectedIcon = ({
+  value,
+  name,
+  className,
+}: {
+  value: number;
+  name: string;
+  className: string;
+}) => {
+  let costum;
+
+  if (name === 'suit') {
+    costum = suit.find((item) => item.id === value);
+  } else {
+    costum = boyHead.find((item) => item.id === value);
+  }
+
+  const Icon = costum?.icon || suit[0].icon;
+
+  return <Icon className={className} />;
+};
+
+export const Skin = ({ data }: ISkinProps) => {
+  const { name, points, place, avatar, skin } = data;
+  const [selectedHead, setSelectedHead] = useState(0);
+  const [selectedCostum, setSelectedCostum] = useState(0);
+
+  const [hair, setHair] = useState(skin.hair);
+  const [costum, setCostum] = useState(skin.costum);
 
   const handleSetSkin = () => {
     localStorage.setItem('hair', hair);
@@ -35,12 +77,84 @@ export const Skin = () => {
     window.dispatchEvent(new Event('skinChange'));
   };
 
+  useEffect(() => {
+    const curentHead = boyHead.find((item) => item.id === selectedHead);
+    const currentCostum = suit.find((item) => item.id === selectedCostum);
+
+    setHair(curentHead?.name || '');
+    setCostum(currentCostum?.name || '');
+
+    // setSelectedHead(boyHead.findIndex((item) => item.name === hair));
+    // setSelectedCostum(suit.findIndex((item) => item.name === costum));
+  }, [selectedHead, selectedCostum]);
+
   return (
     <Container className={styles.skinContainer}>
       <>
-        <h1 className={styles.title}>Customize your appearance!</h1>
-        <div className={styles.skinContent}>
-          {/* <div className={styles.hairWrapper}> */}
+        <div className="flex flex-row items-center justify-between w-full">
+          <h1 className={styles.title}>{name}</h1>
+          <div className="flex items-center gap-[16px]">
+            <Star />
+            <p className={styles.place}>{place}</p>
+          </div>
+          <div>
+            <p>{points}</p>
+          </div>
+        </div>
+        <div className="flex w-full">
+          <div className="w-[50%]">
+            <SelectedSuit hair={hair} costum={costum} />
+          </div>
+          <div className="w-[50%]">
+            <div className="flex">
+              <button
+                type="button"
+                onClick={() => {
+                  if (selectedHead > 0) {
+                    setSelectedHead(selectedHead - 1);
+                  }
+                }}
+              >
+                <ArrowLeft />
+              </button>
+              <div>{<SelectedIcon value={selectedHead} name="head" className="w-[80px]" />}</div>
+              <button
+                type="button"
+                onClick={() => {
+                  if (selectedHead < boyHead.length - 1) {
+                    setSelectedHead(selectedHead + 1);
+                  }
+                }}
+              >
+                <ArrowRight />
+              </button>
+            </div>
+            <div className="flex">
+              <button
+                type="button"
+                onClick={() => {
+                  if (selectedCostum > 0) {
+                    setSelectedCostum(selectedCostum - 1);
+                  }
+                }}
+              >
+                <ArrowLeft />
+              </button>
+              <div>{<SelectedIcon value={selectedCostum} name="suit" className="w-[80px]" />}</div>
+              <button
+                type="button"
+                onClick={() => {
+                  if (selectedCostum < suit.length - 1) {
+                    setSelectedCostum(selectedCostum + 1);
+                  }
+                }}
+              >
+                <ArrowRight />
+              </button>
+            </div>
+          </div>
+        </div>
+        {/* <div className={styles.skinContent}>
           <div className={styles.hairContainer}>
             <p className={styles.hairTitle}>hair</p>
             <ul className={styles.hairList}>
@@ -72,7 +186,6 @@ export const Skin = () => {
                       type="button"
                       onClick={() => {
                         setCostum(item.name);
-                        // handleSetCostum(item.name);
                       }}
                       className={styles.costumBtn}
                     >
@@ -83,12 +196,12 @@ export const Skin = () => {
               })}
             </ul>
           </div>
-        </div>
-        <div className={styles.continueBtnWrapper}>
+        </div> */}
+        {/* <div className={styles.continueBtnWrapper}>
           <button type="button" onClick={handleSetSkin} className={styles.submitBtn}>
             Continue
           </button>
-        </div>
+        </div> */}
       </>
     </Container>
   );

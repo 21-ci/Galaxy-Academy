@@ -14,6 +14,17 @@ import Mission from '../mission/Mission';
 import CloseBtn from '@/public/images/svg/closeBtn.svg';
 import { Skin } from '../../skin/Skin';
 
+const personData = {
+  name: 'laborlis',
+  points: 12651,
+  place: 221,
+  avatar: '/images/profile/avatar.png',
+  skin: {
+    hair: '/images/profile/hair.png',
+    costum: '/images/profile/costum.png',
+  },
+};
+
 export const Tablet = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -50,7 +61,7 @@ export const Tablet = () => {
               <Mission setIsGameOpen={setIsGameOpen} setGameLink={setGameLink} />
             </Content>
             <Content tabIndex={undefined} value="profile">
-              <Skin />
+              <Skin data={personData} />
             </Content>
             <Content value="diary">
               <Book />

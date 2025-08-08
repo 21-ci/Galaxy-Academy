@@ -7,10 +7,17 @@
   padding: 30px 0 20px;
 
   .title {
-    font-size: 40px;
+    width: fit-content;
+    font-size: 60px;
     font-family: var(--font-alumni), sans-serif;
     font-weight: 500;
     text-transform: uppercase;
+  }
+
+  .place {
+    font-size: 48px;
+    font-family: var(--font-alumni), sans-serif;
+    font-weight: 400;
   }
 
   .skinContent {
@@ -198,7 +205,7 @@
     height: auto;
     position: absolute;
     top: 95px;
-    left: 0;
+    left: 120px;
     z-index: 10;
 
     @media (min-width: 1280px) {
