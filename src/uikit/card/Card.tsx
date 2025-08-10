@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { ElementType } from "react";
-import styles from "./Card.module.scss";
-import cn from 'classnames'
+import { ElementType } from 'react';
+import styles from './Card.module.scss';
+import cn from 'classnames';
 
 interface ICartProps {
   image: ElementType;
@@ -12,19 +12,29 @@ interface ICartProps {
   gameLink: string;
   onClick: (value: boolean) => void;
   setGameLink: (gameLink: string) => void;
+  setActiveMission: (level: number) => void;
 }
 
-export const Card = ({ image, title, level, status, gameLink, setGameLink, onClick }: ICartProps) => {
-
-  const Icon = image
+export const Card = ({
+  image,
+  title,
+  level,
+  status,
+  // gameLink,
+  // setGameLink,
+  // onClick,
+  setActiveMission,
+}: ICartProps) => {
+  const Icon = image;
 
   return (
     <button
       type="button"
       className={styles.btn}
       onClick={() => {
-        setGameLink(gameLink);
-        onClick(true)
+        // setGameLink(gameLink);
+        // onClick(true)
+        setActiveMission(level);
       }}
       disabled={!status}
     >

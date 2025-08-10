@@ -10,7 +10,7 @@ import { Book } from './book/Book';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Test from '../test/quiz/quiz';
 import Leaderboard from '../leaderboard/leaderboard';
-import Mission from '../mission/Mission';
+import Missions from '../missions/Missions';
 import CloseBtn from '@/public/images/svg/closeBtn.svg';
 import { Skin } from '../../skin/Skin';
 
@@ -44,15 +44,15 @@ export const Tablet = () => {
   return (
     <>
       {isGameOpen ? (
-        <div className={`ml-auto p-[20px] w-[1100px] h-[683px] p-0`}>
+        <div className={`ml-auto h-[683px] w-[1100px] p-0 p-[20px]`}>
           <button
             type="button"
             className="absolute top-[20px] right-[60px]"
             onClick={() => setIsGameOpen(false)}
           >
-            <CloseBtn className="w-[50px] h-auto" />
+            <CloseBtn className="h-auto w-[50px]" />
           </button>
-          <iframe src={gameLink} className="w-full h-full border-none" allowFullScreen />
+          <iframe src={gameLink} className="h-full w-full border-none" allowFullScreen />
         </div>
       ) : (
         <div className={styles.tablet}>
@@ -61,10 +61,10 @@ export const Tablet = () => {
             onValueChange={(value) => handleSetActiveParam(value)}
             className="h-full"
           >
-            <Content value="mission">
-              <Mission setIsGameOpen={setIsGameOpen} setGameLink={setGameLink} />
+            <Content value="mission" className="h-full">
+              <Missions setIsGameOpen={setIsGameOpen} setGameLink={setGameLink} />
             </Content>
-            <Content tabIndex={undefined} value="profile" className="w-full h-full">
+            <Content tabIndex={undefined} value="profile" className="h-full w-full">
               <Skin data={personData} />
             </Content>
             <Content value="diary">

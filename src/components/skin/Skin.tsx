@@ -1,5 +1,4 @@
 import { boyHead, suit } from '@/src/utils/skinData';
-import { Container } from '../shared/container/container';
 import Star from '@/public/images/profile/skin/svg/star.svg';
 import ArrowLeft from '@/public/images/profile/skin/svg/arrow-left.svg';
 import ArrowRight from '@/public/images/profile/skin/svg/arrow-right.svg';
@@ -62,20 +61,12 @@ const SelectedIcon = ({
 };
 
 export const Skin = ({ data }: ISkinProps) => {
-  const { name, points, place, avatar, skin } = data;
+  const { name, points, place, skin } = data;
   const [selectedHead, setSelectedHead] = useState(0);
   const [selectedCostum, setSelectedCostum] = useState(0);
 
   const [hair, setHair] = useState(skin.hair);
   const [costum, setCostum] = useState(skin.costum);
-
-  const handleSetSkin = () => {
-    localStorage.setItem('hair', hair);
-    localStorage.setItem('costum', costum);
-
-    localStorage.setItem('skin', JSON.stringify({ hair, costum }));
-    window.dispatchEvent(new Event('skinChange'));
-  };
 
   useEffect(() => {
     const curentHead = boyHead.find((item) => item.id === selectedHead);
@@ -83,28 +74,27 @@ export const Skin = ({ data }: ISkinProps) => {
 
     setHair(curentHead?.name || '');
     setCostum(currentCostum?.name || '');
-
-    // setSelectedHead(boyHead.findIndex((item) => item.name === hair));
-    // setSelectedCostum(suit.findIndex((item) => item.name === costum));
   }, [selectedHead, selectedCostum]);
 
   return (
     <div className={styles.skinContainer}>
-      <div className="flex flex-row items-center justify-between w-full">
+      <div className="flex w-full flex-row items-center justify-between p-[0_20px]">
         <h1 className={styles.title}>{name}</h1>
         <div className="flex items-center gap-[16px]">
           <Star />
           <p className={styles.place}>{place}</p>
         </div>
         <div>
-          <p>{points}</p>
+          <p className={styles.points}>
+            {points}/{'384 400'}
+          </p>
         </div>
       </div>
-      <div className="flex w-full h-full mt-auto">
-        <div className="w-[50%] h-full bg-blue flex">
+      <div className="mt-auto flex h-full w-full">
+        <div className="bg-blue flex h-full w-[50%] bg-[url('/images/profile/skin/backlight.webp')] bg-cover bg-center">
           <SelectedSuit hair={hair} costum={costum} />
         </div>
-        <div className="w-[50%] h-full flex flex-col">
+        <div className="flex h-full w-[50%] flex-col items-center justify-center">
           <div className="flex">
             <button
               type="button"
@@ -114,10 +104,10 @@ export const Skin = ({ data }: ISkinProps) => {
                 }
               }}
             >
-              <ArrowLeft />
+              <ArrowLeft className="w-full" />
             </button>
-            <div className="rounded-[6px] bg-[url('/images/profile/skin/hair-bg.webp')] bg-cover bg-center w-fit h-fit flex items-center justify-center">
-              {<SelectedIcon value={selectedHead} name="head" className="w-[100%] h-auto" />}
+            <div className="mt-auto mb-auto flex h-fit w-fit items-center justify-center rounded-[6px] bg-[url('/images/profile/skin/hair-bg.webp')] bg-cover bg-center p-[10px]">
+              {<SelectedIcon value={selectedHead} name="head" className="h-auto w-[80%]" />}
             </div>
             <button
               type="button"
@@ -127,10 +117,10 @@ export const Skin = ({ data }: ISkinProps) => {
                 }
               }}
             >
-              <ArrowRight />
+              <ArrowRight className="w-full" />
             </button>
           </div>
-          <div className="rounded-[6px] bg-[url('/images/profile/skin/suit-bg.webp')] bg-cover bg-center w-fit h-fit flex items-center justify-center">
+          <div className="flex">
             <button
               type="button"
               onClick={() => {
@@ -139,9 +129,11 @@ export const Skin = ({ data }: ISkinProps) => {
                 }
               }}
             >
-              <ArrowLeft />
+              <ArrowLeft className="w-full" />
             </button>
-            <div>{<SelectedIcon value={selectedCostum} name="suit" className="w-[100%] h-auto" />}</div>
+            <div className="mt-auto mb-auto flex h-fit w-fit items-center justify-center rounded-[6px] bg-[url('/images/profile/skin/suit-bg.webp')] bg-cover bg-center p-[20px]">
+              {<SelectedIcon value={selectedCostum} name="suit" className="h-auto w-[100%]" />}
+            </div>
             <button
               type="button"
               onClick={() => {
@@ -150,59 +142,11 @@ export const Skin = ({ data }: ISkinProps) => {
                 }
               }}
             >
-              <ArrowRight />
+              <ArrowRight className="w-full" />
             </button>
           </div>
         </div>
       </div>
-      {/* <div className={styles.skinContent}>
-          <div className={styles.hairContainer}>
-            <p className={styles.hairTitle}>hair</p>
-            <ul className={styles.hairList}>
-              {boyHead.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <li key={item.id} className={styles.hairItem}>
-                    <button
-                      type="button"
-                      onClick={() => setHair(item.name)}
-                      className={styles.hairBtn}
-                    >
-                      <Icon className={styles.iconHead} />
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-          <SelectedSuit hair={hair} costum={costum} />
-          <div className={styles.costumContainer}>
-            <p className={styles.costumTitle}>costumer</p>
-            <ul className={styles.costumList}>
-              {suit.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <li key={item.id} className={styles.costumItem}>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setCostum(item.name);
-                      }}
-                      className={styles.costumBtn}
-                    >
-                      <Icon className={styles.ikonSkin} />
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </div> */}
-      {/* <div className={styles.continueBtnWrapper}>
-          <button type="button" onClick={handleSetSkin} className={styles.submitBtn}>
-            Continue
-          </button>
-        </div> */}
     </div>
   );
 };
