@@ -56,11 +56,15 @@ export const Tablet = () => {
         </div>
       ) : (
         <div className={styles.tablet}>
-          <Root value={activeTab} onValueChange={(value) => handleSetActiveParam(value)}>
+          <Root
+            value={activeTab}
+            onValueChange={(value) => handleSetActiveParam(value)}
+            className="h-full"
+          >
             <Content value="mission">
               <Mission setIsGameOpen={setIsGameOpen} setGameLink={setGameLink} />
             </Content>
-            <Content tabIndex={undefined} value="profile">
+            <Content tabIndex={undefined} value="profile" className="w-full h-full">
               <Skin data={personData} />
             </Content>
             <Content value="diary">

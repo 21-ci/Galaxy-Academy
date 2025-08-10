@@ -89,72 +89,73 @@ export const Skin = ({ data }: ISkinProps) => {
   }, [selectedHead, selectedCostum]);
 
   return (
-    <Container className={styles.skinContainer}>
-      <>
-        <div className="flex flex-row items-center justify-between w-full">
-          <h1 className={styles.title}>{name}</h1>
-          <div className="flex items-center gap-[16px]">
-            <Star />
-            <p className={styles.place}>{place}</p>
+    <div className={styles.skinContainer}>
+      <div className="flex flex-row items-center justify-between w-full">
+        <h1 className={styles.title}>{name}</h1>
+        <div className="flex items-center gap-[16px]">
+          <Star />
+          <p className={styles.place}>{place}</p>
+        </div>
+        <div>
+          <p>{points}</p>
+        </div>
+      </div>
+      <div className="flex w-full h-full mt-auto">
+        <div className="w-[50%] h-full bg-blue flex">
+          <SelectedSuit hair={hair} costum={costum} />
+        </div>
+        <div className="w-[50%] h-full flex flex-col">
+          <div className="flex">
+            <button
+              type="button"
+              onClick={() => {
+                if (selectedHead > 0) {
+                  setSelectedHead(selectedHead - 1);
+                }
+              }}
+            >
+              <ArrowLeft />
+            </button>
+            <div className="rounded-[6px] bg-[url('/images/profile/skin/hair-bg.webp')] bg-cover bg-center w-fit h-fit flex items-center justify-center">
+              {<SelectedIcon value={selectedHead} name="head" className="w-[100%] h-auto" />}
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                if (selectedHead < boyHead.length - 1) {
+                  setSelectedHead(selectedHead + 1);
+                }
+              }}
+            >
+              <ArrowRight />
+            </button>
           </div>
-          <div>
-            <p>{points}</p>
+          <div className="rounded-[6px] bg-[url('/images/profile/skin/suit-bg.webp')] bg-cover bg-center w-fit h-fit flex items-center justify-center">
+            <button
+              type="button"
+              onClick={() => {
+                if (selectedCostum > 0) {
+                  setSelectedCostum(selectedCostum - 1);
+                }
+              }}
+            >
+              <ArrowLeft />
+            </button>
+            <div>{<SelectedIcon value={selectedCostum} name="suit" className="w-[100%] h-auto" />}</div>
+            <button
+              type="button"
+              onClick={() => {
+                if (selectedCostum < suit.length - 1) {
+                  setSelectedCostum(selectedCostum + 1);
+                }
+              }}
+            >
+              <ArrowRight />
+            </button>
           </div>
         </div>
-        <div className="flex w-full">
-          <div className="w-[50%]">
-            <SelectedSuit hair={hair} costum={costum} />
-          </div>
-          <div className="w-[50%]">
-            <div className="flex">
-              <button
-                type="button"
-                onClick={() => {
-                  if (selectedHead > 0) {
-                    setSelectedHead(selectedHead - 1);
-                  }
-                }}
-              >
-                <ArrowLeft />
-              </button>
-              <div>{<SelectedIcon value={selectedHead} name="head" className="w-[80px]" />}</div>
-              <button
-                type="button"
-                onClick={() => {
-                  if (selectedHead < boyHead.length - 1) {
-                    setSelectedHead(selectedHead + 1);
-                  }
-                }}
-              >
-                <ArrowRight />
-              </button>
-            </div>
-            <div className="flex">
-              <button
-                type="button"
-                onClick={() => {
-                  if (selectedCostum > 0) {
-                    setSelectedCostum(selectedCostum - 1);
-                  }
-                }}
-              >
-                <ArrowLeft />
-              </button>
-              <div>{<SelectedIcon value={selectedCostum} name="suit" className="w-[80px]" />}</div>
-              <button
-                type="button"
-                onClick={() => {
-                  if (selectedCostum < suit.length - 1) {
-                    setSelectedCostum(selectedCostum + 1);
-                  }
-                }}
-              >
-                <ArrowRight />
-              </button>
-            </div>
-          </div>
-        </div>
-        {/* <div className={styles.skinContent}>
+      </div>
+      {/* <div className={styles.skinContent}>
           <div className={styles.hairContainer}>
             <p className={styles.hairTitle}>hair</p>
             <ul className={styles.hairList}>
@@ -197,12 +198,11 @@ export const Skin = ({ data }: ISkinProps) => {
             </ul>
           </div>
         </div> */}
-        {/* <div className={styles.continueBtnWrapper}>
+      {/* <div className={styles.continueBtnWrapper}>
           <button type="button" onClick={handleSetSkin} className={styles.submitBtn}>
             Continue
           </button>
         </div> */}
-      </>
-    </Container>
+    </div>
   );
 };
