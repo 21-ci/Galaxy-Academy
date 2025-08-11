@@ -1,7 +1,7 @@
-import React from 'react'
-import styles from './Footer.module.scss'
-import { FaTwitter, FaFacebookF, FaMedium, FaYoutube } from 'react-icons/fa'
-import { FiMapPin, FiPhone, FiMail } from 'react-icons/fi'
+import React from 'react';
+import styles from './Footer.module.scss';
+import { FaTwitter, FaFacebookF, FaMedium, FaYoutube } from 'react-icons/fa';
+import { FiMapPin, FiPhone, FiMail } from 'react-icons/fi';
 
 const Footer = () => {
   return (
@@ -9,9 +9,7 @@ const Footer = () => {
       <div className={styles.container}>
         {/* Left Column */}
         <div className={styles.column}>
-          <p className={styles.quote}>
-            Learn To Love Growth And Change And You Will Be A Success.
-          </p>
+          <p className={styles.quote}>Learn To Love Growth And Change And You Will Be A Success.</p>
           <div className={styles.socials}>
             <FaTwitter />
             <FaFacebookF />
@@ -52,13 +50,13 @@ const Footer = () => {
         <div className={styles.column}>
           <p>Receive special offers and get our latest updates.</p>
           <form className={styles.subscribeForm}>
-            <input type='email' placeholder='Enter e-mail' />
-            <button type='submit'>JOIN</button>
+            <input type="email" placeholder="Enter e-mail" />
+            <button type="submit">JOIN</button>
           </form>
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

@@ -17,8 +17,10 @@
   .imgWapper {
     padding: 24px;
     position: relative;
-    width: 142px;
-    height: 142px;
+    // width: 142px;
+    // height: 142px;
+    width: 100%;
+    aspect-ratio: 1/1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,7 +34,8 @@
     );
 
     .icon {
-      width: 55px;
+      // width: 55px;
+      width: 70%;
       height: auto;
       filter: grayscale(100%);
     }
@@ -45,8 +48,10 @@
   .imgWapper::before {
     position: absolute;
     content: '';
-    width: 75px;
-    height: 75px;
+    // width: 75px;
+    // height: 75px;
+    width: 70%;
+    height: 70%;
     top: 50%;
     left: 50%;
     border: 1px solid white;
@@ -78,10 +83,10 @@
 @media (min-width: 1200px) {
   .btn {
     .imgWapper {
-      width: 122px;
-      height: 122px;
+      // width: 122px;
+      // height: 122px;
       .icon {
-        width: 55px;
+        // width: 55px;
       }
 
       .imgWapper::before {
@@ -89,5 +94,11 @@
         height: 75px;
       }
     }
+  }
+}
+
+@media (min-width: 1200px){
+  .title{
+    font-size: 18px;
   }
 }

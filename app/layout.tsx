@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono, Alumni_Sans } from 'next/font/google';
 import './globals.css';
 import Header from '@/src/components/header/header';
+import Footer from '@/src/components/footer/footer';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -38,6 +39,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} ${alumni.variable}`}>
         <Header />
         <main className="">{children}</main>
+        <Footer />
       </body>
     </html>
   );
