@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_Слой_8" data-name="Слой 8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 666.771 474.353">
+  <defs>
+    <linearGradient id="_Безымянный_градиент_222" data-name="Безымянный градиент 222" x1="245" y1="365.684" x2="245" y2="108.669" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2ec888" stop-opacity=".2"/>
+      <stop offset=".42" stop-color="#2ec888" stop-opacity=".418"/>
+      <stop offset="1" stop-color="#2ec888" stop-opacity=".75"/>
+    </linearGradient>
+    <clipPath id="clippath">
+      <path d="M273.354,108.669h-56.707c-62.366,0-112.922,48.249-112.922,107.768v65.956c0,45.999,39.076,83.291,87.275,83.291h108.002c48.199,0,87.275-37.292,87.275-83.291v-65.956c0-59.519-50.557-107.768-112.922-107.768Z" style="fill: url(#_Безымянный_градиент_222);"/>
+    </clipPath>
+  </defs>
+  <path d="M273.354,108.669h-56.707c-62.366,0-112.922,48.249-112.922,107.768v65.956c0,45.999,39.076,83.291,87.275,83.291h108.002c48.199,0,87.275-37.292,87.275-83.291v-65.956c0-59.519-50.557-107.768-112.922-107.768Z" style="fill: url(#_Безымянный_градиент_222);"/>
+  <g style="clip-path: url(#clippath);">
+    <image width="2689" height="2690" transform="translate(-89.504 -117.565) scale(.24)" xlink:href="uzcosmos/sources/refs/outercore.png"/>
+    <image width="2689" height="2690" transform="translate(-89.504 -117.565) scale(.24)" xlink:href="uzcosmos/sources/refs/core.png"/>
+  </g>
+</svg>

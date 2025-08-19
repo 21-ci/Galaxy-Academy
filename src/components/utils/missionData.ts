@@ -50,7 +50,7 @@ export const missionData: IMissionData[] = [
     gameLink: 'https://allelf.github.io/MMOArcade/',
     description:
       'This is a description for mission sun at level 1. It provides additional context and details about the mission.',
-    videoLink: '',
+    videoLink: '/video/mission/earth/earth.mp4',
     facts: [
       {
         id: 1,
