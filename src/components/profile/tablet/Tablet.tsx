@@ -39,7 +39,7 @@ export const Tablet = () => {
     params.set('activeTab', value);
     router.replace(`/profile?${params.toString()}`, { scroll: false });
     setActiveTab(value);
-  }; // ✅ closed function here
+  };
 
   return (
     <>
@@ -67,7 +67,7 @@ export const Tablet = () => {
             <Content tabIndex={undefined} value="profile" className="h-full w-full">
               <Skin data={personData} />
             </Content>
-            <Content value="diary">
+            <Content value="diary" className="h-full w-full">
               <Book />
             </Content>
             <Content value="test">
