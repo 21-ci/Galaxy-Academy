@@ -7,7 +7,10 @@ import Atmosphere from '@/public/images/svg/mssion/atmosphere.svg';
 import Moon from '@/public/images/svg/mssion/moon.svg';
 import Saturt from '@/public/images/svg/mssion/saturn.svg';
 
-import land from '@/public/images/profile/mission/land.webp';
+import core from '@/public/images/profile/mission/land.webp';
+import land from '@/public/images/profile/mission/crust.webp';
+import outerCore from '@/public/images/profile/mission/outercore.webp';
+import mantle from '@/public/images/profile/mission/mantel.webp';
 import { ElementType } from 'react';
 
 export interface IMissionData {
@@ -50,35 +53,35 @@ export const missionData: IMissionData[] = [
     gameLink: 'https://allelf.github.io/MMOArcade/',
     description:
       'This is a description for mission sun at level 1. It provides additional context and details about the mission.',
-    videoLink: '',
+    videoLink: '/video/mission/earth/earth.mp4',
     facts: [
       {
         id: 1,
         title: 'Fact 1',
         description:
           'Земная кора — тонкая оболочка всего от 5 до 70 км, на которой живут люди, растения, животные и т.д.',
-        image: land.src,
+        image: core.src,
       },
       {
         id: 2,
         title: 'Fact 2',
         description:
           ' Мантия — горячий слой густой породы, который движет горы и вызывает извержения вулканов.',
-        image: '',
+        image: mantle.src,
       },
       {
         id: 3,
         title: 'Fact 3',
         description:
           'Внешнее ядро — жидкий слой железа, который течёт и усиливает магнитное поле Земли, как гигантский генератор.',
-        image: '',
+        image: outerCore.src,
       },
       {
         id: 4,
         title: 'Fact 4',
         description:
           'Ядро — твёрдый металлический шар в центре Земли, горячий (до 6000°C) и создающий магнитное поле, защищающее планету от космических лучей.',
-        image: '',
+        image: land.src,
       },
     ],
   },
