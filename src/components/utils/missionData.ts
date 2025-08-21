@@ -119,6 +119,7 @@ export const missionData: IMissionData[] = [
     description:
       'This is a description for mission sun at level 5. It provides additional context and details about the mission.',
     videoLink: '',
+    fileLink: '/files/mission/rocket_instruction.pdf',
     facts: [],
   },
   {

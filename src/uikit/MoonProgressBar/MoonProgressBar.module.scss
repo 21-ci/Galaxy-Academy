@@ -1,0 +1,54 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+}
+
+.progressWrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progressBar {
+  position: relative;
+  padding: 3px 0;
+  width: 100%;
+  height: 30px;
+  border: 2px solid #0282ad;
+}
+
+.progressBarFill {
+  height: 100%;
+  background-color: #0282ad;
+}
+
+.landIcon,
+.moonIcon {
+  position: absolute;
+  top: 50%;
+  width: 65px;
+  height: auto;
+  transform: translateY(-50%);
+  z-index: 999;
+}
+
+.landIcon {
+  left: -5%;
+}
+
+.moonIcon {
+  right: -5%;
+}
+
+.boyIcon {
+  width: 35px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+}
