@@ -16,7 +16,7 @@ import { Skin } from '../../skin/Skin';
 
 const personData = {
   name: 'laborlis',
-  points: 12651,
+  points: 160400,
   place: 221,
   avatar: '/images/profile/avatar.png',
   skin: {
@@ -67,7 +67,7 @@ export const Tablet = () => {
             <Content tabIndex={undefined} value="profile" className="h-full w-full">
               <Skin data={personData} />
             </Content>
-            <Content value="diary" className="h-full w-full">
+            <Content value="diary" className={`h-full w-full ${styles.diary}`}>
               <Book />
             </Content>
             <Content value="test">
