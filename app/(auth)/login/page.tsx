@@ -1,36 +1,36 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useAuth } from "@/src/context/AuthContext";
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/src/context/AuthContext';
 
-import PersonIcon from "@mui/icons-material/Person";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import VisibilityIcon from "@mui/icons-material/Visibility";
+import PersonIcon from '@mui/icons-material/Person';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
-import styles from "./Login.module.scss";
+import styles from './login.module.scss';
 
 export default function LoginPage() {
   const { login } = useAuth();
   const router = useRouter();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     // ✅ Hardcoded credentials
-    const validUser = "uztash2267B-Spaceship";
-    const validPass = "ewtq2";
+    const validUser = 'uztash2267B-Spaceship';
+    const validPass = 'ewtq2';
 
     if (username === validUser && password === validPass) {
       login(); // from AuthContext
-      router.push("/profile");
+      router.push('/profile');
     } else {
-      setError("Invalid username or password ❌");
+      setError('Invalid username or password ❌');
     }
   };
 
@@ -56,7 +56,7 @@ export default function LoginPage() {
         {/* Password */}
         <div className={styles.inputGroup}>
           <input
-            type={showPassword ? "text" : "password"}
+            type={showPassword ? 'text' : 'password'}
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -68,10 +68,7 @@ export default function LoginPage() {
               className={styles.iconClick}
             />
           ) : (
-            <VisibilityIcon
-              onClick={() => setShowPassword(true)}
-              className={styles.iconClick}
-            />
+            <VisibilityIcon onClick={() => setShowPassword(true)} className={styles.iconClick} />
           )}
         </div>
 
