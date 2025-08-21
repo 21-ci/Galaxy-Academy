@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Alumni_Sans } from "next/font/google";
 import "./globals.css";
-import Header from "@/src/components/header/header";
-import Footer from "@/src/components/footer/footer";
 import { AuthProvider } from "@/src/context/AuthContext";
+import LayoutWrapper from "@/src/components/LayoutWrapper"; // ✅ import wrapper
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,20 +29,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${alumni.variable}`}
       >
         <AuthProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <LayoutWrapper>{children}</LayoutWrapper>
         </AuthProvider>
       </body>
     </html>
