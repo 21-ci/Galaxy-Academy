@@ -1,55 +1,137 @@
-import React from "react";
-import styles from './leaderboard.module.scss';
+import React, { useState } from "react";
+import styles from "./leaderboard.module.scss";
 
-const data = [
-  { name: 'Leyla', mission: 4, test: 5, change: 4, total: 9 },
-  { name: 'Yusuf', mission: 3, test: 5, change: -1, total: 8 },
-  { name: 'Aziz', mission: 3, test: 4, change: 2, total: 7 },
-  { name: 'Amina', mission: 4, test: 3, change: -3, total: 7 },
-  { name: 'Lola', mission: 2, test: 5, change: -4, total: 7 },
-  { name: 'Sardor', mission: 3, test: 3, change: 1, total: 6 },
+interface Player {
+  rank: number;
+  name: string;
+  avatar: string;
+  classPoints: number;
+  schoolPoints: number;
+  cityPoints: number;
+  countryPoints: number;
+  total: number;
+  highlight?: boolean;
+}
+
+const players: Player[] = [
+  {
+    rank: 1,
+    name: "LABORLIS",
+    avatar: "/images/profile/skin/svg/boy_dark.svg",
+    classPoints: 444,
+    schoolPoints: 500,
+    cityPoints: 321,
+    countryPoints: 280,
+    total: 765,
+    highlight: true
+  },
+  {
+    rank: 2,
+    name: "EMILIA",
+    avatar: "/images/profile/skin/svg/girl_light.svg",
+    classPoints: 286,
+    schoolPoints: 450,
+    cityPoints: 311,
+    countryPoints: 270,
+    total: 597
+  },
+  {
+    rank: 3,
+    name: "CHRISTOPHER",
+    avatar: "/images/profile/skin/svg/boy_dark.svg",
+    classPoints: 199,
+    schoolPoints: 410,
+    cityPoints: 290,
+    countryPoints: 260,
+    total: 489
+  },
+  {
+    rank: 4,
+    name: "PAUL",
+    avatar: "/images/profile/skin/svg/boy_light.svg",
+    classPoints: 112,
+    schoolPoints: 300,
+    cityPoints: 244,
+    countryPoints: 200,
+    total: 356
+  }
 ];
 
-const Leaderboard = () => {
+const categories = ["CLASS", "SCHOOL", "CITY", "COUNTRY"] as const;
+
+export default function Leaderboard() {
+  const [viewMode, setViewMode] = useState<"PLAYER" | "TEAM">("PLAYER");
+  const [category, setCategory] = useState<typeof categories[number]>("CLASS");
+
+  const getPoints = (player: Player) => {
+    switch (category) {
+      case "CLASS": return player.classPoints;
+      case "SCHOOL": return player.schoolPoints;
+      case "CITY": return player.cityPoints;
+      case "COUNTRY": return player.countryPoints;
+    }
+  };
+
   return (
-    <div className={styles.container}>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>student</th>
-            <th>mission</th>
-            <th>test</th>
-            <th>change</th>
-            <th>total</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((student, index) => (
-            <tr key={index}>
-              <td>
-                <div className={styles.studentCell}>
-                  <div className={styles.avatar}></div>
-                  <span>{student.name}</span>
-                </div>
-              </td>
-              <td>{student.mission}</td>
-              <td>{student.test}</td>
-              <td className={
-                student.change > 0
-                  ? styles.positive
-                  : student.change < 0
-                  ? styles.negative
-                  : ''
-              }>
-                {student.change > 0 ? `↑${student.change}` : student.change < 0 ? `↓${Math.abs(student.change)}` : '0'}
-              </td>
-              <td>{student.total}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className={styles.leaderboard}>
+      <div className={styles.topToggle}>
+        <button
+          className={viewMode === "PLAYER" ? styles.active : ""}
+          onClick={() => setViewMode("PLAYER")}
+        >
+          PLAYER
+        </button>
+        <button
+          className={viewMode === "TEAM" ? styles.active : ""}
+          onClick={() => setViewMode("TEAM")}
+        >
+          TEAM
+        </button>
+      </div>
+
+      <div className={styles.categoryTabs}>
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            className={category === cat ? styles.active : ""}
+            onClick={() => setCategory(cat)}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <ul className={styles.playerList}>
+        {players.map((p) => (
+          <li
+            key={p.rank}
+            className={`${styles.playerRow} ${p.highlight ? styles.highlight : ""}`}
+          >
+            <div className={styles.rank}>{p.rank}</div>
+            <img src={p.avatar} alt={p.name} className={styles.avatar} />
+            <div className={styles.name}>{p.name}</div>
+
+            <div className={styles.points}>
+              <div className={styles.pointItem}>
+                <img src="/images/profile/leaderboard/star-score.svg" className="w-6 h-6 rounded-full" />
+                <div>{getPoints(p)}</div>
+              </div>
+
+              <div className={`${styles.pointItem} ${styles.categoryPoints}`}>
+                <img src="/images/profile/leaderboard/donetest.svg" className="w-6 h-6 rounded-full" />
+                <div>{getPoints(p)}</div>
+              </div>
+
+              <div className={`${styles.pointItem} ${styles.total}`}>
+                <div>TOTAL</div>
+                <div>{p.total}</div>
+              </div>
+            </div>
+
+          </li>
+        ))}
+      </ul>
+
     </div>
   );
-};
-
-export default Leaderboard;
+}
