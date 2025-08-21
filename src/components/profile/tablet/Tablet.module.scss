@@ -21,7 +21,7 @@
 
   .tabletBtnWrapper {
     position: absolute;
-    top: 65px;
+    top: 10%;
     right: 3%;
     display: flex;
     flex-direction: column;
@@ -38,6 +38,10 @@
       }
     }
   }
+}
+
+.diary {
+  padding: 3% 0;
 }
 
 @media (min-width: 1200px) {
@@ -88,10 +92,10 @@
   .tablet {
     .tabletBtnWrapper {
       top: 10%;
-      right: 3%;
+      right: 2.5%;
       .tabletBtn {
         .icon {
-          width: 80px;
+          width: 100px;
           height: auto;
         }
       }

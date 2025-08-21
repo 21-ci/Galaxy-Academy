@@ -7,6 +7,15 @@
   align-items: center;
   justify-content: space-between;
 
+  .progressBarWrapper {
+    width: 50%;
+  }
+
+  .titleWrapper {
+    padding: 0 5%;
+    gap: 60px;
+  }
+
   .title {
     width: fit-content;
     font-size: 60px;
@@ -22,9 +31,15 @@
   }
 
   .points {
+    width: 100%;
+    text-align: center;
     font-size: 32px;
     font-family: var(--font-alumni), sans-serif;
     font-weight: 400;
+  }
+
+  .rightSideContent {
+    padding: 5% 0;
   }
 
   .skinContent {
@@ -190,21 +205,21 @@
   height: 100%;
 
   .headIcon {
-    width: 30%;
-    height: auto;
+    height: 30%;
+    width: auto;
     position: absolute;
-    top: 0;
+    top: 20%;
     left: 53%;
     z-index: 20;
-    transform: translate(-50%);
+    transform: translate(-50%, -50%);
   }
   .costumIcon {
-    width: 40%;
-    height: auto;
+    height: 55%;
+    width: auto;
     position: absolute;
-    top: 28%;
+    top: 60%;
     left: 50%;
-    transform: translate(-50%);
+    transform: translate(-50%, -50%);
     z-index: 10;
   }
 }
